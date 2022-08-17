@@ -1,8 +1,9 @@
-package cybersoft.java18.backend.CRM_Project.service;
+package cybersoft.java18.backend.CRM_Project.service.impl;
 
 import cybersoft.java18.backend.CRM_Project.model.RoleModel;
 import cybersoft.java18.backend.CRM_Project.repository.IRoleRepository;
-import cybersoft.java18.backend.CRM_Project.repository.RoleRepository;
+import cybersoft.java18.backend.CRM_Project.repository.impl.RoleRepository;
+import cybersoft.java18.backend.CRM_Project.service.IRoleService;
 
 import java.util.List;
 
@@ -24,9 +25,8 @@ public class RoleService implements IRoleService {
         return roleRepository.updateRole(newRole);
     }
 
-    @Override
-    public RoleModel deleteRoleById(int roleId) {
-        return roleRepository.deleteRoleById(roleId);
+    public RoleModel deleteRole(RoleModel role) {
+        return roleRepository.deleteRole(role);
 
     }
 }

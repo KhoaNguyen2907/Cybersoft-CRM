@@ -8,4 +8,7 @@ public interface IUserRepository {
     List<UserModel> findUserByEmail(String email);
     List<UserModel> findAllUser();
     UserModel saveUser(UserModel user);
+    UserModel updateUser(UserModel user);
+    UserModel deleteUser(UserModel user);
+
 }

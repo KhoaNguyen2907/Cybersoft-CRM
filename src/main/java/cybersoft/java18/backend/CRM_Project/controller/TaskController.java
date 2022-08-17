@@ -1,9 +1,9 @@
 package cybersoft.java18.backend.CRM_Project.controller;
 
 import com.google.gson.Gson;
-import cybersoft.java18.backend.CRM_Project.model.RoleModel;
-import cybersoft.java18.backend.CRM_Project.service.IRoleService;
-import cybersoft.java18.backend.CRM_Project.service.impl.RoleService;
+import cybersoft.java18.backend.CRM_Project.model.TaskModel;
+import cybersoft.java18.backend.CRM_Project.service.ITaskService;
+import cybersoft.java18.backend.CRM_Project.service.impl.TaskService;
 import cybersoft.java18.backend.CRM_Project.utils.UrlUtil;
 
 import javax.servlet.ServletException;
@@ -15,71 +15,68 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = {UrlUtil.API_ROLE, UrlUtil.API_ROLE_ADD,
-        UrlUtil.API_ROLE_UPDATE, UrlUtil.API_ROLE_DELETE})
-public class RoleController extends HttpServlet {
+@WebServlet(urlPatterns = {UrlUtil.API_TASK, UrlUtil.API_TASK_ADD, UrlUtil.API_TASK_UPDATE, UrlUtil.API_TASK_DELETE})
+public class TaskController extends HttpServlet {
     Gson gson = new Gson();
-    IRoleService roleService = new RoleService();
-
+    ITaskService taskService = new TaskService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<RoleModel> roleList = roleService.findAllRole();
+        List<TaskModel> taskList = taskService.findAllTask();
 
-        String roleListJson = gson.toJson(roleList);
+        String taskListJson = gson.toJson(taskList);
 
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-
         PrintWriter writer = resp.getWriter();
-        writer.print("Đây là test json : " + roleListJson);
+        writer.print("Danh sách công việc: " + taskListJson);
         writer.flush();
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         switch (req.getServletPath()) {
-            case UrlUtil.API_ROLE_ADD:
+            case UrlUtil.API_TASK_ADD:
                 req.setCharacterEncoding("UTF-8");
 
-                RoleModel role = gson.fromJson(req.getReader(),RoleModel.class);
-                role = roleService.addNewRole(role);
-                String addedRoleJson = gson.toJson(role);
+                TaskModel task = gson.fromJson(req.getReader(), TaskModel.class);
+                task = taskService.addNewTask(task);
+
+                String addedTaskJson = gson.toJson(task);
 
                 resp.setContentType("application/json");
                 resp.setCharacterEncoding("UTF-8");
-
                 PrintWriter writer = resp.getWriter();
-                writer.print("Đã thêm thành công quyền mới: " + addedRoleJson);
+                writer.print("Đã thêm thành công công việc mới: " + addedTaskJson);
                 writer.flush();
                 break;
-            case UrlUtil.API_ROLE_UPDATE :
+
+            case UrlUtil.API_TASK_UPDATE:
                 req.setCharacterEncoding("UTF-8");
-                RoleModel modifiedRole = gson.fromJson(req.getReader(),RoleModel.class);
-                modifiedRole = roleService.modifyRole(modifiedRole);
-                String modifiedRoleJson = gson.toJson(modifiedRole);
+                TaskModel modifiedTask = gson.fromJson(req.getReader(), TaskModel.class);
+                modifiedTask = taskService.modifyTask(modifiedTask);
+
+                String modifiedTaskJson = gson.toJson(modifiedTask);
 
                 resp.setCharacterEncoding("UTF-8");
                 resp.setContentType("application/json");
-
                 PrintWriter writer1 = resp.getWriter();
-                writer1.print("Đã thay đổi quyền thành công: " + modifiedRoleJson);
+                writer1.print("Đã chỉnh sửa công việc thành công: " + modifiedTaskJson);
                 writer1.flush();
                 break;
-            case UrlUtil.API_ROLE_DELETE :
-                RoleModel deletedRole = gson.fromJson(req.getReader(),RoleModel.class);
-                deletedRole = roleService.deleteRole(deletedRole);
-                String deletedRoleJson = gson.toJson(deletedRole);
+            case UrlUtil.API_TASK_DELETE:
+                TaskModel deletedTask = gson.fromJson(req.getReader(), TaskModel.class);
+                deletedTask = taskService.deleteTask(deletedTask);
+
+                String deletedTaskJson = gson.toJson(deletedTask);
 
                 resp.setCharacterEncoding("UTF-8");
                 resp.setContentType("application/json");
 
                 PrintWriter writer2 = resp.getWriter();
-                writer2.print("Đã xóa thành công quyền số " + deletedRole.getId() + " " + deletedRoleJson);
+                writer2.print("Đã xóa thành công công việc số " + deletedTask.getId() + " " + deletedTaskJson);
                 writer2.flush();
                 break;
             default:
-
         }
-
     }
 }

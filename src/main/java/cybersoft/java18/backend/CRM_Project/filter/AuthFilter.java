@@ -30,7 +30,8 @@ public class AuthFilter implements Filter {
     private boolean isAllowedUrl(HttpServletRequest req){
         String url = req.getServletPath();
         if (url.startsWith(UrlUtil.DANG_NHAP) || url.startsWith(UrlUtil.DANG_KY)
-            || url.startsWith(UrlUtil.API_ROLE) || url.startsWith(UrlUtil.API_USER)) {
+            || url.startsWith(UrlUtil.API_ROLE) || url.startsWith(UrlUtil.API_USER)
+                || url.startsWith(UrlUtil.API_PROJECT) || url.startsWith(UrlUtil.API_TASK)) {
             return true;
         }
         return false;

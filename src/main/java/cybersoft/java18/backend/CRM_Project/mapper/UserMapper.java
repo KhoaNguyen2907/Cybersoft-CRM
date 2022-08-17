@@ -12,7 +12,7 @@ public class UserMapper implements IAbstractMapper<UserModel> {
     @Override
     public UserModel rowMapper(ResultSet resultSet) throws SQLException {
         return new UserModel(resultSet.getInt("code"), resultSet.getString("email"), resultSet.getString("password"),
-                resultSet.getString("name"), resultSet.getString("address"),resultSet.getString("phone"),
+                resultSet.getString("fullname"), resultSet.getString("address"),resultSet.getString("phone"),
                 new RoleModel(resultSet.getInt("role_id"), resultSet.getString("role_name"),resultSet.getString("description"))) ;
     }
 }

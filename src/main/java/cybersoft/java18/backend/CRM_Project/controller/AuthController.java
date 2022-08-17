@@ -1,7 +1,7 @@
 package cybersoft.java18.backend.CRM_Project.controller;
 
 import cybersoft.java18.backend.CRM_Project.service.IUserService;
-import cybersoft.java18.backend.CRM_Project.service.UserService;
+import cybersoft.java18.backend.CRM_Project.service.impl.UserService;
 import cybersoft.java18.backend.CRM_Project.utils.JspUtil;
 import cybersoft.java18.backend.CRM_Project.utils.UrlUtil;
 
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {UrlUtil.DANG_NHAP, UrlUtil.DANG_KY, UrlUtil.DANG_XUAT})
-public class AuthServlet extends HttpServlet {
+public class AuthController extends HttpServlet {
 IUserService userService = new UserService();
 
     @Override

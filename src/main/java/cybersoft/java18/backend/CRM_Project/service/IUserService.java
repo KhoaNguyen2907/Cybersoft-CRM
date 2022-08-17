@@ -6,6 +6,12 @@ import java.util.List;
 
 public interface IUserService {
     List<UserModel>  findUserByEmailAndPassword(String email);
+
     List<UserModel> findAllUser();
+
     UserModel addUser(UserModel user);
+
+    UserModel modifyUser(UserModel user);
+
+    UserModel deleteUser(UserModel user);
 }

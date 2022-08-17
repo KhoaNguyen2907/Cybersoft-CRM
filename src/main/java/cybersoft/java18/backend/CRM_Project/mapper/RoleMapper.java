@@ -9,7 +9,7 @@ public class RoleMapper implements IAbstractMapper<RoleModel> {
 
     @Override
     public RoleModel rowMapper(ResultSet resultSet) throws SQLException {
-        return new RoleModel(resultSet.getInt("id"),resultSet.getString("name"),
+        return new RoleModel(resultSet.getInt("id"),resultSet.getString("role_name"),
                 resultSet.getString("description"));
     }
 }

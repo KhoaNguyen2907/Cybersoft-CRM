@@ -8,5 +8,5 @@ public interface IRoleRepository {
     List<RoleModel> findAllRole();
     RoleModel saveRole(RoleModel role);
     RoleModel updateRole (RoleModel role);
-    RoleModel deleteRoleById (int id);
+    RoleModel deleteRole(RoleModel role);
 }

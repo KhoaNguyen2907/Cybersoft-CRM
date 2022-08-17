@@ -8,5 +8,5 @@ public interface IRoleService {
     List<RoleModel> findAllRole();
     RoleModel addNewRole(RoleModel roleModel);
     RoleModel modifyRole(RoleModel newRole);
-    RoleModel deleteRoleById(int roleId);
+    RoleModel deleteRole(RoleModel role);
 }

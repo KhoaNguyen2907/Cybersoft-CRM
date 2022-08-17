@@ -2,6 +2,7 @@ package cybersoft.java18.backend.CRM_Project.model;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 @Data
 public class UserModel {
@@ -22,6 +23,7 @@ public class UserModel {
         this.address = address;
         this.phone = phone;
         this.role = role;
+        this.projectList = new ArrayList<>();
     }
 
     public UserModel(int code, String email, String password,
@@ -34,5 +36,6 @@ public class UserModel {
         this.address = address;
         this.phone = phone;
         this.role = roleModel;
+        this.projectList = new ArrayList<>();
     }
 }
