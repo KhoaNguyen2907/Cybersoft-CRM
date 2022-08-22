@@ -1,10 +1,4 @@
 
-|
-Lsrc/main/java/cybersoft/java18/backend/CRM_Project/jdbc/MySQLConnection.java,c\8\c8c022ef5fe9b8777813fd46ac3816e1908a7b71
-{
-Ksrc/main/java/cybersoft/java18/backend/CRM_Project/service/UserService.java,2\c\2c84bbcfa04f60cd7135cbbc0db2732ab9047a92
-{
-Ksrc/main/java/cybersoft/java18/backend/CRM_Project/service/RoleService.java,8\5\85e91e791003a3f5cc2f2fb2f921dbdda94549ba
 y
 Isrc/main/java/cybersoft/java18/backend/CRM_Project/mapper/UserMapper.java,7\b\7baf9126b0feaca8eafa389cf677ac4dc10d8d88
 Ç
@@ -15,9 +9,23 @@ w
 Gsrc/main/java/cybersoft/java18/backend/CRM_Project/model/RoleModel.java,9\1\911d806eadf15edb012c04ba9c76b94f9a20253a
 w
 Gsrc/main/java/cybersoft/java18/backend/CRM_Project/model/UserModel.java,e\9\e92f483434912c0644323e7e8374bcf958d635fc
+@
+CRM-Database.sql,9\3\931a665d20d45fcf1b2373499137a615fac1e03e
 Å
-Qsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/RoleRepository.java,a\c\ac5338270e7889fc76255ee1b15b12603382fcd5
-Å
-Qsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/UserRepository.java,5\8\588ee769aa9197f39722e0793f33306309b0a3d9
+Qsrc/main/java/cybersoft/java18/backend/CRM_Project/controller/RoleController.java,2\2\22a8fb5e0eabf83e7d0bf03b0d585f5e7cfd6fdb
+{
+Ksrc/main/java/cybersoft/java18/backend/CRM_Project/model/ResponseModel.java,4\3\43adbffe5265618e62c483e811e899cd60c4060f
+y
+Isrc/main/java/cybersoft/java18/backend/CRM_Project/filter/AuthFilter.java,2\2\22f9bacf2b91303f157be9be7460a7cc6d37106a
+|
+Lsrc/main/java/cybersoft/java18/backend/CRM_Project/jdbc/MySQLConnection.java,c\8\c8c022ef5fe9b8777813fd46ac3816e1908a7b71
 |
 Lsrc/main/java/cybersoft/java18/backend/CRM_Project/service/IRoleService.java,c\7\c7f2ff8f59d9b37d3987254fe2a7316434aa4787
+Ä
+Psrc/main/java/cybersoft/java18/backend/CRM_Project/service/impl/RoleService.java,5\9\593658b6a57677044b07882ba7866079b8e4137f
+â
+Ysrc/main/java/cybersoft/java18/backend/CRM_Project/repository/impl/ProjectRepository.java,d\1\d1ed4f53f46d3387aa3d7022a9eb2522105fb9be
+Ü
+Vsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/impl/RoleRepository.java,1\a\1a88d884cad13346876ad69de95e8c0686567019
+Ñ
+Tsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/AbstracRepository.java,e\5\e5ff49adb97262aebf325e7950eea01e552c3319

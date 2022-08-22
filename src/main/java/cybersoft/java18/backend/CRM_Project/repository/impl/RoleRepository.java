@@ -9,7 +9,7 @@ import cybersoft.java18.backend.CRM_Project.repository.IRoleRepository;
 import java.util.List;
 
 public class RoleRepository extends AbstracRepository<RoleModel> implements IRoleRepository {
-    IAbstractMapper mapper = new RoleMapper();
+    IAbstractMapper<RoleModel> mapper = new RoleMapper();
 
     @Override
     public List<RoleModel> findAllRole() {

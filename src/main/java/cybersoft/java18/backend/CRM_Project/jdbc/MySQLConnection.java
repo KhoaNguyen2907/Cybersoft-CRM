@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MySQLConnection {
-    private static final String URL = "jdbc:mysql://localhost:3307/CybersoftCRM";
+    private static final String URL = "jdbc:mysql://localhost:3306/CybersoftCRM";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "1234";
 

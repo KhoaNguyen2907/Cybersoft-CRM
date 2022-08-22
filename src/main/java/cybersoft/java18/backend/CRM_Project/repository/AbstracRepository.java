@@ -4,7 +4,6 @@ import cybersoft.java18.backend.CRM_Project.jdbc.MySQLConnection;
 import cybersoft.java18.backend.CRM_Project.mapper.IAbstractMapper;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,34 +26,40 @@ public class AbstracRepository<T> {
     }
 
     public List<T> executeQuery(String query, IAbstractMapper<T> rowMapper, Object... parameter) {
-        try (Connection connection = MySQLConnection.getConnection()) {
+        try (Connection connection = MySQLConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
             List<T> list = new ArrayList<>();
-            PreparedStatement statement = connection.prepareStatement(query);
             setParameter(statement, parameter);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                list.add(rowMapper.rowMapper(resultSet));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    list.add(rowMapper.rowMapper(resultSet));
+                }
+            } catch (Exception e2) {
+                throw new RuntimeException("Error when executing result set: " + e2.getMessage());
             }
+
             return list;
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException("Error when executeQuery: " + e.getMessage());
         }
     }
 
     public int executeUpdate(String query, Object... parameter) {
-        try (Connection connection = MySQLConnection.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        try (Connection connection = MySQLConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
             setParameter(statement, parameter);
             statement.executeUpdate();
-
-            ResultSet keys = statement.getGeneratedKeys();
-            if (keys.next()) {
-                return keys.getInt(1);
+            try (ResultSet keys = statement.getGeneratedKeys()) {
+                if (keys.next()) {
+                    return keys.getInt(1);
+                }
+                return 0;
+            } catch (Exception e2) {
+                throw new RuntimeException("Error when executing resul set: " + e2.getMessage());
             }
-            return 0;
-
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException("Error when executeUpdate: " + e.getMessage());
         }
 
     }

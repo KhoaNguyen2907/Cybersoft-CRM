@@ -8,7 +8,16 @@ import cybersoft.java18.backend.CRM_Project.service.IRoleService;
 import java.util.List;
 
 public class RoleService implements IRoleService {
-    IRoleRepository roleRepository = new RoleRepository();
+    private static RoleService INSTANCE;
+    private final IRoleRepository roleRepository = new RoleRepository();
+
+    public static RoleService getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new RoleService();
+        }
+        return INSTANCE;
+
+    }
 
     @Override
     public List<RoleModel> findAllRole() {

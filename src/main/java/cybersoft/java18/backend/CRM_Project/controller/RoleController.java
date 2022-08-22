@@ -1,6 +1,7 @@
 package cybersoft.java18.backend.CRM_Project.controller;
 
 import com.google.gson.Gson;
+import cybersoft.java18.backend.CRM_Project.model.ResponseModel;
 import cybersoft.java18.backend.CRM_Project.model.RoleModel;
 import cybersoft.java18.backend.CRM_Project.service.IRoleService;
 import cybersoft.java18.backend.CRM_Project.service.impl.RoleService;
@@ -21,17 +22,18 @@ public class RoleController extends HttpServlet {
     Gson gson = new Gson();
     IRoleService roleService = new RoleService();
 
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<RoleModel> roleList = roleService.findAllRole();
 
         String roleListJson = gson.toJson(roleList);
-
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
 
         PrintWriter writer = resp.getWriter();
-        writer.print("Đây là test json : " + roleListJson);
+        writer.print(roleListJson);
         writer.flush();
     }
 
@@ -43,13 +45,26 @@ public class RoleController extends HttpServlet {
 
                 RoleModel role = gson.fromJson(req.getReader(),RoleModel.class);
                 role = roleService.addNewRole(role);
-                String addedRoleJson = gson.toJson(role);
+
+                ResponseModel responseData = new ResponseModel();
+                if (role != null){
+                    responseData.setStatusCode(200);
+                    responseData.setSuccess(true);
+                    responseData.setMessage("Thêm thành công");
+                    responseData.setData(role);
+                } else {
+                    responseData.setStatusCode(200);
+                    responseData.setSuccess(false);
+                    responseData.setMessage("Thêm thất bại");
+                }
+
+                String addedRoleJson = gson.toJson(responseData);
 
                 resp.setContentType("application/json");
                 resp.setCharacterEncoding("UTF-8");
 
                 PrintWriter writer = resp.getWriter();
-                writer.print("Đã thêm thành công quyền mới: " + addedRoleJson);
+                writer.print(addedRoleJson);
                 writer.flush();
                 break;
             case UrlUtil.API_ROLE_UPDATE :
@@ -81,5 +96,19 @@ public class RoleController extends HttpServlet {
 
         }
 
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RoleModel deletedRole = gson.fromJson(req.getReader(),RoleModel.class);
+        deletedRole = roleService.deleteRole(deletedRole);
+        String deletedRoleJson = gson.toJson(deletedRole);
+
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+
+        PrintWriter writer2 = resp.getWriter();
+        writer2.print(deletedRoleJson);
+        writer2.flush();
     }
 }
