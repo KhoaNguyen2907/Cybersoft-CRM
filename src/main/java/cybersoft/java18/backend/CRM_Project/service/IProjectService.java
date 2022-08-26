@@ -11,4 +11,7 @@ public interface IProjectService {
     ProjectModel addNewProject(ProjectModel projectModel);
     ProjectModel modifyProject(ProjectModel newProject);
     ProjectModel deleteProject(ProjectModel projectModel);
+
+    ProjectModel findProjectById(int id);
+
 }

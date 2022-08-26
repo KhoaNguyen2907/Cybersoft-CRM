@@ -10,28 +10,28 @@ public class TaskModel {
     String description;
     LocalDate startDate;
     LocalDate endDate;
-    int userCode;
-    int projectId;
-    int statusId;
+    UserModel user;
+    ProjectModel project;
+    StatusModel status;
 
-    public TaskModel(int id, String name, String description, LocalDate startDate, int userCode, int projectId, int statusId) {
+    public TaskModel(int id, String name, String description, LocalDate startDate, UserModel user, ProjectModel project, StatusModel status) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
-        this.userCode = userCode;
-        this.projectId = projectId;
-        this.statusId = statusId;
+        this.user = user;
+        this.project = project;
+        this.status = status;
     }
 
-    public TaskModel(int id, String name, String description, LocalDate startDate, LocalDate endDate, int userCode, int projectId, int statusId) {
+    public TaskModel(int id, String name, String description, LocalDate startDate, LocalDate endDate, UserModel user, ProjectModel project, StatusModel status) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.userCode = userCode;
-        this.projectId = projectId;
-        this.statusId = statusId;
+        this.user = user;
+        this.project = project;
+        this.status = status;
     }
 }

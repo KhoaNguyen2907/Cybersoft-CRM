@@ -1,0 +1,39 @@
+
+l
+java:S1192 "QDefine a constant instead of duplicating this literal "application/json" 5 times.(›ý’Àøÿÿÿÿ
+a
+java:S1192!"FDefine a constant instead of duplicating this literal "UTF-8" 7 times.(·Ù‡ˆÿÿÿÿÿ
+a
+java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(Ýðôï
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯Ö„ÿ
+7	java:S131""Add a default case to this switch.(Ýðôï
+f
+java:S1989#"PHandle the following exception that could be thrown by "getWriter": IOException.(¼½Ù†
+f
+java:S1989-"PHandle the following exception that could be thrown by "getWriter": IOException.(æƒÇ¢
+‚
+java:S1989:"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À
+
+java:S1989<"iHandle the following exceptions that could be thrown by "fromJson": JsonSyntaxException, JsonIOException.(”÷ù”
+f
+java:S1989<"PHandle the following exception that could be thrown by "getReader": IOException.(”÷ù”
+f
+java:S1989P"PHandle the following exception that could be thrown by "getWriter": IOException.(¼½Ù†
+‚
+java:S1989U"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À
+
+java:S1989V"iHandle the following exceptions that could be thrown by "fromJson": JsonSyntaxException, JsonIOException.(•€¾ÿ
+f
+java:S1989V"PHandle the following exception that could be thrown by "getReader": IOException.(•€¾ÿ
+f
+java:S1989h"PHandle the following exception that could be thrown by "getWriter": IOException.(æƒÇ¢
+„
+java:S1989m"iHandle the following exceptions that could be thrown by "fromJson": JsonSyntaxException, JsonIOException.(‹ÕÁ¸ûÿÿÿÿ
+k
+java:S1989m"PHandle the following exception that could be thrown by "getReader": IOException.(‹ÕÁ¸ûÿÿÿÿ
+m
+java:S1989"PHandle the following exception that could be thrown by "getWriter": IOException.(ãâ¡†8â‡±¬0
+n
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(þëŒ
+n
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(×¥Í¸

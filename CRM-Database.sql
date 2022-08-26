@@ -63,6 +63,7 @@ INSERT INTO `CybersoftCRM`.`User` (`email`, `password`, `fullname`, `address`, `
 
 INSERT INTO `CybersoftCRM`.`Project` (`project_name`, `project_description`, `start_date`, `end_date`, `user_code`) VALUES ('Dự án CRM', 'Dự án CRM Cybersoft', '2022-08-18', '2022-08-30', '1');
 INSERT INTO `CybersoftCRM`.`Project` (`project_name`, `project_description`, `start_date`, `end_date`, `user_code`) VALUES ('Dự án AI', 'Dự án cuối khoá', '2022-08-10', '2022-08-25', '2');
+INSERT INTO `CybersoftCRM`.`Project` (`project_name`, `project_description`, `start_date`, `end_date`, `user_code`) VALUES ('Dự án Game đoán số', 'Game đoán số', '2022-08-10', '2022-08-25', '2');
 
 
 INSERT INTO `CybersoftCRM`.`Status` (`id`, `name`) VALUES ('1', 'Chưa bắt đầu');

@@ -28,4 +28,9 @@ public class ProjectService implements IProjectService {
     public ProjectModel deleteProject(ProjectModel project) {
         return projectRepository.deleteProject(project);
     }
+
+    @Override
+    public ProjectModel findProjectById(int id) {
+        return projectRepository.findProjectById(id);
+    }
 }

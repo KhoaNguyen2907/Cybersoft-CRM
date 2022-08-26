@@ -11,4 +11,11 @@ public interface IUserRepository {
     UserModel updateUser(UserModel user);
     UserModel deleteUser(UserModel user);
 
+    UserModel findUserById(int code);
+
+    boolean register(UserModel userModel);
+
+    UserModel findUserByEmailAndPassword(String username, String password);
+
+
 }

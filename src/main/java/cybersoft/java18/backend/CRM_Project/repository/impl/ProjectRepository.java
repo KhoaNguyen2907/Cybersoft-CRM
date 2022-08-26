@@ -63,4 +63,11 @@ public class ProjectRepository extends AbstracRepository<ProjectModel> implement
         executeUpdate(query, project.getId());
         return project;
     }
+
+    @Override
+    public ProjectModel findProjectById(int id) {
+        String query = "select * from Project where id = ?";
+        List<ProjectModel> projectModels = executeQuery(query, mapper, id);
+        return projectModels.size() > 0 ? projectModels.get(0) : null;
+    }
 }

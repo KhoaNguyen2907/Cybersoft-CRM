@@ -1,0 +1,11 @@
+
+E
+java:S3740"/Provide the parametrized type for this generic.(”Μ½Ω
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(―³€‹ύÿÿÿÿ
+Y
+java:S1155G">Use isEmpty() to check whether the collection is empty or not.(υλούÿÿÿÿ
+D
+java:S1128	"/Remove this unused import 'java.sql.Timestamp'.(θς½+
+O
+java:S1128
+"4Remove this unused import 'java.time.LocalDateTime'.(ζΓ§ƒόÿÿÿÿ

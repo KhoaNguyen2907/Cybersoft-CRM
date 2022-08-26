@@ -11,4 +11,12 @@ public interface ITaskRepository {
     TaskModel saveTask(TaskModel task);
     TaskModel updateTask(TaskModel task);
     TaskModel deleteTask(TaskModel task);
+
+    TaskModel findTaskById(int taskId);
+
+
+    List<TaskModel> findTaskByProjectId(int projectId);
+
+    List<TaskModel> findTaskByUserId(int userId);
+
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Data
 public class UserModel {
     int code;
@@ -13,10 +14,12 @@ public class UserModel {
     String address;
     String phone;
     RoleModel role;
+    String avatar;
     List<ProjectModel> projectList;
-    public UserModel( String email, String password,
+
+    public UserModel(String email, String password,
                      String fullName, String address, String phone,
-                      RoleModel role) {
+                     RoleModel role) {
         this.email = email;
         this.password = password;
         this.fullName = fullName;
@@ -37,5 +40,26 @@ public class UserModel {
         this.phone = phone;
         this.role = roleModel;
         this.projectList = new ArrayList<>();
+    }
+
+    public UserModel(int code, String email, String password, String fullName, String address, String phone, RoleModel role, String avatar) {
+        this.code = code;
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+        this.address = address;
+        this.phone = phone;
+        this.role = role;
+        this.avatar = avatar;
+    }
+
+    //to get name in Task
+    public UserModel(int user_code, String user_name) {
+        this.code = user_code;
+        this.fullName = user_name;
+    }
+
+    public UserModel(int code) {
+        this.code = code;
     }
 }

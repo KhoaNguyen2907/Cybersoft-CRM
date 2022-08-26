@@ -10,5 +10,6 @@ public interface IProjectRepository {
     ProjectModel saveProject(ProjectModel project);
     ProjectModel updateProject(ProjectModel project);
     ProjectModel deleteProject(ProjectModel project);
+    ProjectModel findProjectById(int id);
 
 }

@@ -9,4 +9,10 @@ public interface ITaskService {
     TaskModel addNewTask(TaskModel taskModel);
     TaskModel modifyTask(TaskModel newTask);
     TaskModel deleteTask(TaskModel taskModel);
+
+    TaskModel findTaskById(int taskId);
+
+    List<TaskModel> findTaskByProjectId(int projectId);
+
+    List<TaskModel> findTaskByUserId(int userId);
 }

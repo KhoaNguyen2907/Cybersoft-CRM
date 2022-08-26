@@ -28,4 +28,20 @@ public class TaskService implements ITaskService {
     public TaskModel deleteTask(TaskModel taskModel) {
         return taskRepository.deleteTask(taskModel);
     }
+
+    @Override
+    public TaskModel findTaskById(int taskId) {
+
+        return taskRepository.findTaskById(taskId);
+    }
+
+    @Override
+    public List<TaskModel> findTaskByProjectId(int projectId) {
+        return taskRepository.findTaskByProjectId(projectId);
+    }
+
+    @Override
+    public List<TaskModel> findTaskByUserId(int userId) {
+        return taskRepository.findTaskByUserId(userId);
+    }
 }

@@ -9,4 +9,6 @@ public interface IRoleService {
     RoleModel addNewRole(RoleModel roleModel);
     RoleModel modifyRole(RoleModel newRole);
     RoleModel deleteRole(RoleModel role);
+    RoleModel findRoleById(String id);
+
 }

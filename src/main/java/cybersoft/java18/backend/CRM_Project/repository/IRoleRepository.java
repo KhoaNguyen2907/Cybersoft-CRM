@@ -9,4 +9,6 @@ public interface IRoleRepository {
     RoleModel saveRole(RoleModel role);
     RoleModel updateRole (RoleModel role);
     RoleModel deleteRole(RoleModel role);
+    RoleModel findRoleById(String id);
+
 }

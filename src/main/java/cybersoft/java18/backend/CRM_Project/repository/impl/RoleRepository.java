@@ -41,9 +41,12 @@ public class RoleRepository extends AbstracRepository<RoleModel> implements IRol
         return role;
     }
 
-    private List<RoleModel> findRoleById(int id) {
-        String query = "select * from Role where id = ?";
-        return executeQuery(query, mapper, id);
+    @Override
+    public RoleModel findRoleById(String id) {
+        String query = "select * from Role where id = ? ";
+        List<RoleModel> roles = executeQuery(query, mapper, id);
+        return roles.size() > 0 ? roles.get(0) : null;
     }
+
 
 }
