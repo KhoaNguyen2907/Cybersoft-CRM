@@ -25,7 +25,6 @@ if (id != null) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       $("#id").val(data.id);
       $("#name").val(data.name);
       $("#start-date").val(convertDateObjectToString(data.startDate));
@@ -36,8 +35,6 @@ if (id != null) {
     .catch(function (error) {
       console.log(error);
     });
-} else {
-  $("#created-by").val(localStorage.getItem("currentUserCode"));
 }
 
 //convert string to date object json
@@ -46,7 +43,7 @@ if (id != null) {
 function addProject(event) {
   var formEl = $("#submit-form");
   if (checkEmpty(formEl) == false) {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    toastr.error("Vui lòng nhập đầy đủ thông tin");
     return;
   }
   var json = toJson(formEl);
@@ -60,19 +57,21 @@ function addProject(event) {
     body: JSON.stringify(json),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
       console.log(data);
       if (data.isSuccess == true) {
-        alert("Thêm thành công");
-        window.location.href = "/groupwork.html";
+        toastr.success("Thêm thành công");
+        setTimeout(function () {
+          window.location.href = "/groupwork.html";
+        }, 2000);
       } else {
-        alert("Thêm không thành công");
+        toastr.error("Thêm không thành công");
       }
     })
     .catch(function (error) {
+      toastr.error("Thêm không thành công");
       console.log(error);
     });
 }
@@ -82,7 +81,7 @@ function updateProject(event) {
   //get form data
   var formEl = $("#submit-form");
   if (checkEmpty(formEl) == false) {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    toastr.error("Vui lòng nhập đầy đủ thông tin");
     return;
   }
   var json = toJson(formEl);
@@ -96,19 +95,18 @@ function updateProject(event) {
     body: JSON.stringify(toJson(formEl)),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
       console.log(data);
       if (data.isSuccess == true) {
-        alert("Cập nhật thành công");
+        toastr.success("Cập nhật thành công");
       } else {
-        alert("Cập nhật không thành công");
+        toastr.error("Cập nhật không thành công");
       }
     })
     .catch(function (error) {
-      alert("Cập nhật không thành công");
+      toastr.error("Cập nhật không thành công");
       console.log(error);
     });
 }

@@ -11,6 +11,10 @@ import java.io.IOException;
 
 @WebFilter(urlPatterns = {"/*"})
 public class AuthFilter implements Filter {
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -18,6 +22,9 @@ public class AuthFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         if (isLogged(req) || isAllowedUrl(req)) {
             resp.setHeader("Access-Control-Allow-Origin", "*");
+            resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me,  Authorization, dataType");
+
             chain.doFilter(request, response);
         } else {
             req.getRequestDispatcher(JspUtil.DANG_NHAP).forward(req, resp);

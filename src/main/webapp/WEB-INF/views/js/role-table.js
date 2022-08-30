@@ -52,13 +52,14 @@ function deleteRole(id, event) {
       .then(function (data) {
         console.log(data);
         if (data.isSuccess == true) {
-          alert("Xóa thành công");
+          toastr.success("Xoá thành công");
           window.location.reload();
         } else {
-          alert("Xóa không thành công");
+          toastr.error("Xoá thất bại");
         }
       })
       .catch(function (error) {
+        toastr.error("Xoá thất bại");
         console.log(error);
       });
   }

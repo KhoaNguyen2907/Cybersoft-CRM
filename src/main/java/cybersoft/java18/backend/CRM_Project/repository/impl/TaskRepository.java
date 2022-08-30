@@ -14,7 +14,7 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
     @Override
     public List<TaskModel> findAllTask() {
         String query = new StringBuilder().append("select t.id , task_name, task_description, t.start_date,")
-                .append(" t.end_date, u.code as user_code, u.fullname as user_name, p.id as project_id, p.project_name,p.project_description,")
+                .append(" t.end_date, u.code as user_code, u.fullname as user_name,u.email as user_email, p.id as project_id, p.project_name,p.project_description,")
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
                 .append(" p.user_code as project_user_code, s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")
@@ -70,7 +70,7 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
     @Override
     public TaskModel findTaskById(int taskId) {
         String query = new StringBuilder().append("select t.id , task_name, task_description, t.start_date,")
-                .append(" t.end_date, u.code as user_code, u.fullname as user_name, p.id as project_id, p.project_name,p.project_description,")
+                .append(" t.end_date, u.code as user_code, u.fullname as user_name,u.email as user_email, p.id as project_id, p.project_name,p.project_description,")
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
                 .append(" p.user_code as project_user_code, s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")
@@ -84,9 +84,9 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
     @Override
     public List<TaskModel> findTaskByProjectId(int projectId) {
         String query = new StringBuilder().append("select t.id , task_name, task_description, t.start_date,")
-                .append(" t.end_date, u.code as user_code, u.fullname as user_name, p.id as project_id, p.project_name,p.project_description,")
+                .append(" t.end_date, u.code as user_code, u.fullname as user_name, u.email as user_email, p.id as project_id, p.project_name,p.project_description,")
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
-                .append(" p.user_code as project_user_code, s.id as status_id, s.name as status_name")
+                .append(" p.user_code as project_user_code,  s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")
                 .append(" inner join Status s on t.status_id = s.id inner join User u on t.user_code = u.code")
                 .append(" where p.id = ?")
@@ -97,7 +97,7 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
     @Override
     public List<TaskModel> findTaskByUserId(int userId) {
         String query = new StringBuilder().append("select t.id , task_name, task_description, t.start_date,")
-                .append(" t.end_date, u.code as user_code, u.fullname as user_name, p.id as project_id, p.project_name,p.project_description,")
+                .append(" t.end_date, u.code as user_code, u.fullname as user_name, u.email as user_email, p.id as project_id, p.project_name,p.project_description,")
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
                 .append(" p.user_code as project_user_code, s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")

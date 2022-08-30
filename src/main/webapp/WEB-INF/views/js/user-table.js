@@ -40,34 +40,55 @@ fetch("http://localhost:8080/CRM-Project/api/user", {
 
 //delete user
 function deleteUser(code, event) {
-  var result = confirm("Bạn có chắc chắn muốn xóa người dùng này không?");
-  if (result) {
-    fetch("http://localhost:8080/CRM-Project/api/user/delete", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      //body is json
-      body: JSON.stringify({
-        code: code,
-      }),
+  fetch("http://localhost:8080/CRM-Project/get-current-user", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      dataType: "json",
+      Authorization: "Bearer " + jwtToken,
+    },
+  })
+    .then(function (response) {
+      return response.json();
     })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        if (data.isSuccess == true) {
-          alert("Xóa thành công");
-          window.location.reload();
-        } else {
-          alert("Xóa không thành công");
+    .then(function (data) {
+      if (data.role.id == 3 || data.role.id == 2) {
+        alert("Không có quyền xoá");
+      } else {
+        var result = confirm("Bạn có chắc chắn muốn xóa người dùng này không?");
+        if (result) {
+          fetch("http://localhost:8080/CRM-Project/api/user/delete", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            //body is json
+            body: JSON.stringify({
+              code: code,
+            }),
+          })
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              console.log(data);
+              if (data.isSuccess == true) {
+                toastr.success("Xoá thành công");
+                window.location.reload();
+              } else {
+                toastr.error("Xoá thất bại");
+              }
+            })
+            .catch(function (error) {
+              toastr.error("Xoá thất bại");
+              console.log(error);
+            });
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 //get detail of user, send redirect to user-details.html

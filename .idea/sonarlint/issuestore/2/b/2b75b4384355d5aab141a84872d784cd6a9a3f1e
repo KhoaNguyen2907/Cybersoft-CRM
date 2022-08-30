@@ -1,0 +1,47 @@
+
+l
+java:S1192&"QDefine a constant instead of duplicating this literal "application/json" 7 times.(›ı’Àøÿÿÿÿ
+a
+java:S1192'"FDefine a constant instead of duplicating this literal "UTF-8" 9 times.(·Ù‡ˆÿÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯Ö„ÿ
+7	java:S131!""Add a default case to this switch.(İğôï
+f
+java:S1989("PHandle the following exception that could be thrown by "getWriter": IOException.(¼½Ù†
+t
+java:S1989-"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(‹Ìï§úÿÿÿÿ
+f
+java:S19893"PHandle the following exception that could be thrown by "getWriter": IOException.(æƒÇ¢
+t
+java:S19898"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Í¼ÇÙüÿÿÿÿ
+f
+java:S1989>"PHandle the following exception that could be thrown by "getWriter": IOException.(ãâ¡†
+{
+java:S1989C"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Ì³ğºøÿÿÿÿ8§¹†İ­0
+f
+java:S1989I"PHandle the following exception that could be thrown by "getWriter": IOException.(î¢¨
+‚
+java:S1989U"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À
+~
+java:S1989W"iHandle the following exceptions that could be thrown by "fromJson": JsonSyntaxException, JsonIOException.(æàñ
+e
+java:S1989W"PHandle the following exception that could be thrown by "getReader": IOException.(æàñ
+f
+java:S1989h"PHandle the following exception that could be thrown by "getWriter": IOException.(¼½Ù†
+‚
+java:S1989n"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À
+„
+java:S1989o"iHandle the following exceptions that could be thrown by "fromJson": JsonSyntaxException, JsonIOException.(§×øşşÿÿÿÿ
+k
+java:S1989o"PHandle the following exception that could be thrown by "getReader": IOException.(§×øşşÿÿÿÿ
+g
+java:S1989€"PHandle the following exception that could be thrown by "getWriter": IOException.(æƒÇ¢
+…
+java:S1989…"iHandle the following exceptions that could be thrown by "fromJson": JsonSyntaxException, JsonIOException.(¶¯Ğüÿÿÿÿ
+l
+java:S1989…"PHandle the following exception that could be thrown by "getReader": IOException.(¶¯Ğüÿÿÿÿ
+n
+java:S1989˜"PHandle the following exception that could be thrown by "getWriter": IOException.(ãâ¡†8·¹†İ­0
+m
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ÆÂÿf
+s
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ò—Í­üÿÿÿÿ

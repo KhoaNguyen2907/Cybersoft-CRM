@@ -34,7 +34,7 @@ if (id != null) {
 function addRole(event) {
   var formEl = $("#submit-form");
   if (checkEmpty(formEl) == false) {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    toastr.error("Vui lòng nhập đầy đủ thông tin");
     return;
   }
   var json = toJson(formEl);
@@ -47,19 +47,21 @@ function addRole(event) {
     body: JSON.stringify(json),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       if (data.isSuccess == true) {
-        alert("Thêm thành công");
-        window.location.href = "role-table.html";
+        toastr.success("Thêm mới thành công");
+        //wait 3s
+        setTimeout(function () {
+          window.location.href = "role-table.html";
+        }, 2000);
       } else {
-        alert("Thêm không thành công");
+        toastr.error("Thêm thất bại");
       }
     })
     .catch(function (error) {
+      toastr.error("Thêm thất bại");
       console.log(error);
     });
 }
@@ -82,15 +84,13 @@ function updateRole(event) {
     body: JSON.stringify(toJson(formEl)),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       if (data.isSuccess == true) {
-        alert("Cập nhật thành công");
+        toastr.success("Cập nhật thành công");
       } else {
-        alert("Cập nhật không thành công");
+        toastr.error("Thêm thất bại");
       }
       //prevent refresh page
       event.preventDefault();

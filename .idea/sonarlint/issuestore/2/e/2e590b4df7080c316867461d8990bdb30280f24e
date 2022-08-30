@@ -1,0 +1,14 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(¥ä×¥ûÿÿÿÿ
+—
+java:S1192"zDefine a constant instead of duplicating this literal "  from Task t inner join Project p on t.project_id = p.id" 4 times.(ÿÊÕÊ8ÿ­ÑÎ­0
+–
+java:S1192"yDefine a constant instead of duplicating this literal "select t.id , task_name, task_description, t.start_date," 4 times.(¼«É8ÿ­ÑÎ­0
+¸
+java:S1192"•Define a constant instead of duplicating this literal " inner join Status s on t.status_id = s.id inner join User u on t.user_code = u.code" 4 times.(ö¶íşÿÿÿÿ8ÿ­ÑÎ­0
+§
+java:S1192"„Define a constant instead of duplicating this literal "p.start_date as project_start_date, p.end_date as project_end_date," 4 times.(šú½øÿÿÿÿ8ÿ­ÑÎ­0
+ª
+java:S1192"ŒDefine a constant instead of duplicating this literal " p.user_code as project_user_code, s.id as status_id, s.name as status_name" 3 times.(İ“‡Æ8€®ÑÎ­0
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯³€‹ıÿÿÿÿ

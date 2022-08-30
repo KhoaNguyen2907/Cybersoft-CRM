@@ -54,9 +54,10 @@ public class UserModel {
     }
 
     //to get name in Task
-    public UserModel(int user_code, String user_name) {
+    public UserModel(int user_code, String user_name, String email) {
         this.code = user_code;
         this.fullName = user_name;
+        this.email = email;
     }
 
     public UserModel(int code) {

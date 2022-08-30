@@ -36,6 +36,10 @@ fetch("http://localhost:8080/CRM-Project/get-current-user", {
       };
       //display current user info
       $(".current-user-name").text(currentUser.fullName);
+      $("#self-detail").attr(
+        "href",
+        "user-details.html?code=" + currentUser.code
+      );
     }
   })
   .catch(function (error) {
@@ -70,8 +74,8 @@ function convertStringDateToDDMMYY(date) {
     date.substring(0, 4);
   return dateString;
 }
-//check empty input of form data
 
+//check empty input of form data
 function checkEmpty(formEl) {
   var check = true;
   formEl.find("input").each(function () {

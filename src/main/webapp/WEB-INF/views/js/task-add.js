@@ -53,7 +53,6 @@ fetch("http://localhost:8080/CRM-Project/api/status", {
     return response.json();
   })
   .then(function (data) {
-    console.log("status" + data);
     $("#status").empty();
     $.each(data, function (index, value) {
       //clear select element before display new data
@@ -90,7 +89,6 @@ if (id != null) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       //setvalue for select element
       $("#project").val(data.project.id);
       $("#name").val(data.name);
@@ -111,7 +109,7 @@ function addTask(event) {
   var formEl = $("#submit-form");
   //if any input is empty, alert and retype
   if (checkEmpty(formEl) == false) {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    toastr.error("Vui lòng nhập đầy đủ thông tin");
     return;
   }
 
@@ -126,20 +124,23 @@ function addTask(event) {
     body: JSON.stringify(json),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
       console.log(data);
       if (data.isSuccess == true) {
-        alert("Thêm thành công");
-        window.location.href = "/task.html";
+        toastr.success("Thêm thành công");
+        setTimeout(function () {
+          window.location.href = "/task.html";
+        }, 2000);
       } else {
-        alert("Thêm không thành công");
+        //toastr fail
+        toastr.error("Cập nhật thất bại");
       }
     })
     .catch(function (error) {
       console.log(error);
+      toastr.error("Cập nhật thất bại");
     });
 }
 
@@ -148,7 +149,7 @@ function updateTask(event) {
   //get form data
   var formEl = $("#submit-form");
   if (checkEmpty(formEl) == false) {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    toastr.error("Vui lòng nhập đầy đủ thông tin");
     return;
   }
 
@@ -163,19 +164,17 @@ function updateTask(event) {
     body: JSON.stringify(toJson(formEl)),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       if (data.isSuccess == true) {
-        alert("Cập nhật thành công");
+        toastr.success("Cập nhật thành công");
       } else {
-        alert("Cập nhật không thành công");
+        toastr.error("Cập nhật thất bại");
       }
     })
     .catch(function (error) {
-      alert("Cập nhật không thành công");
+      toastr.error("Cập nhật thất bại");
       console.log(error);
     });
 }

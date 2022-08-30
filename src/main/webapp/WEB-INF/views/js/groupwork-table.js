@@ -22,10 +22,10 @@ fetch("http://localhost:8080/CRM-Project/api/project", {
           //parse date object to string and change format to dd-mm-yyyy
           convertStringDateToDDMMYY(convertDateObjectToString(value.startDate)),
           convertStringDateToDDMMYY(convertDateObjectToString(value.endDate)),
-          '<button class="btn btn-primary btn-sm" onclick="editProject(' +
+          '<button id="btn-edit"  class="btn btn-primary btn-sm" onclick="editProject(' +
             value.id +
             ')">Sửa</button>' +
-            '<button class="btn btn-danger btn-sm" onclick="deleteProject(' +
+            '<button id="btn-delete" class="btn btn-danger btn-sm" onclick="deleteProject(' +
             value.id +
             ')">Xóa</button>' +
             '<button class="btn btn-info btn-sm" onclick="getDetail(' +
@@ -41,36 +41,59 @@ fetch("http://localhost:8080/CRM-Project/api/project", {
 
 //delete project
 function deleteProject(id, event) {
-  var result = confirm("Bạn có chắc chắn muốn xóa dự án này không?");
-  if (result) {
-    fetch("http://localhost:8080/CRM-Project/api/project/delete", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      //body is json
-      body: JSON.stringify({
-        id: id,
-      }),
+  fetch("http://localhost:8080/CRM-Project/get-current-user", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      dataType: "json",
+      Authorization: "Bearer " + jwtToken,
+    },
+  })
+    .then(function (response) {
+      return response.json();
     })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        if (data.isSuccess == true) {
-          alert("Xóa thành công");
-          window.location.reload();
-        } else {
-          alert("Xóa không thành công");
+    .then(function (data) {
+      if (data.role.id == 3) {
+        alert("Không có quyền xoá");
+      } else {
+        var result = confirm("Bạn có chắc chắn muốn xóa dự án này không?");
+        if (result) {
+          fetch("http://localhost:8080/CRM-Project/api/project/delete", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            //body is json
+            body: JSON.stringify({
+              id: id,
+            }),
+          })
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              console.log(data);
+              if (data.isSuccess == true) {
+                //toast success
+                toastr.success("Xoá thành công");
+                window.location.reload();
+              } else {
+                //toast error
+                toastr.error("Xoá thất bại");
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+              toastr.error("Xoá thất bại");
+            });
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("Xóa không thành công");
-      });
-  }
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
+
 //edit project
 function editProject(id, event) {
   window.location.href = "/groupwork-add.html?id=" + id;

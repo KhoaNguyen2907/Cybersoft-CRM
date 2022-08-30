@@ -22,6 +22,11 @@
     />
     <!-- animation CSS -->
     <link href="css/animate.css" rel="stylesheet" />
+    <!--Toastr Css-->
+    <link
+      href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+      rel="stylesheet"
+    />
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet" />
     <!-- color CSS -->
@@ -93,7 +98,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="profile.html">Thông tin cá nhân</a></li>
-                  <li><a href="#">Thống kê công việc</a></li>
+                  <li><a id="self-detail" href="#">Thống kê công việc</a></li>
                   <li class="divider"></li>
                   <li><a onclick="logout()" href="#">Đăng xuất</a></li>
                 </ul>
@@ -266,8 +271,11 @@
     <script src="js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
+    <!--Toastr Noti-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
+    <script src="js/block-user.js"></script>
     <script src="js/common.js"></script>
     <script src="js/groupwork-add.js"></script>
   </body>

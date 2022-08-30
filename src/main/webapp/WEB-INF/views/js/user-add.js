@@ -39,7 +39,8 @@ if (code != null) {
 function addUser(event) {
   var formEl = $("#submit-form");
   if (checkEmpty(formEl) == false) {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    //alert using toastr library
+    toastr.error("Vui lòng nhập đầy đủ thông tin");
     return;
   }
   var json = toJson(formEl);
@@ -53,16 +54,18 @@ function addUser(event) {
     body: JSON.stringify(json),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
       console.log(data);
       if (data.isSuccess == true) {
-        alert("Thêm thành công");
-        window.location.href = "user-table.html";
+        //suscess using toastr
+        toastr.success("Thêm thành công");
+        setTimeout(function () {
+          window.location.href = "user-table.html";
+        }, 2000);
       } else {
-        alert("Thêm không thành công");
+        toastr.error("Thêm thất bại");
       }
     })
     .catch(function (error) {
@@ -74,7 +77,8 @@ function updateUser(event) {
   //get form data
   var formEl = $("#submit-form");
   if (checkEmpty(formEl) == false) {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    //alert using toastr
+    toastr.error("Vui lòng nhập đầy đủ thông tin");
     return;
   }
   console.log(JSON.stringify(toJson(formEl)));
@@ -87,18 +91,17 @@ function updateUser(event) {
     body: JSON.stringify(toJson(formEl)),
   })
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       if (data.isSuccess == true) {
-        alert("Cập nhật thành công");
+        toastr.success("Cập nhật thành công");
       } else {
-        alert("Cập nhật không thành công");
+        toastr.error("Cập nhật thất bại");
       }
     })
     .catch(function (error) {
+      toastr.error("Cập nhật thất bại");
       console.log(error);
     });
 }
@@ -111,4 +114,25 @@ function toJson(form) {
     json["role"] = { id: $("#roleId").val() };
   });
   return json;
+}
+
+//upload image to cdn
+function uploadImage(event) {
+  var file = event.target.files[0];
+  var formData = new FormData();
+  formData.append("file", file);
+  fetch("http://localhost:8080/CRM-Project/api/image/upload", {
+    method: "POST",
+    body: formData,
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      $("#image").val(data.imageUrl);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }

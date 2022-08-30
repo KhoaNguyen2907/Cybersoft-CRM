@@ -93,9 +93,9 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="profile.html">Thông tin cá nhân</a></li>
-                  <li><a href="#">Thống kê công việc</a></li>
+                  <li><a id="self-detail" href="#">Thống kê công việc</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Đăng xuất</a></li>
+                  <li><a onclick="logout()" href="#">Đăng xuất</a></li>
                 </ul>
               </div>
             </li>
@@ -182,8 +182,12 @@
                           class="thumb-lg img-circle"
                           alt="img"
                       /></a>
-                      <h4 class="text-white">Nguyễn Văn Tèo</h4>
-                      <h5 class="text-white">info.teo@gmail.com</h5>
+                      <h4 id="user-full-name" class="text-white">
+                        Nguyễn Văn Tèo
+                      </h4>
+                      <h5 id="user-email" class="text-white">
+                        info.teo@gmail.com
+                      </h5>
                     </div>
                   </div>
                 </div>
@@ -197,7 +201,10 @@
                   <div class="white-box">
                     <div class="col-in row">
                       <div class="col-xs-12">
-                        <h3 class="counter text-right m-t-15 text-danger">
+                        <h3
+                          id="unstart-task"
+                          class="counter text-right m-t-15 text-danger"
+                        >
                           20%
                         </h3>
                       </div>
@@ -208,6 +215,7 @@
                       <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="progress">
                           <div
+                            id="unstart-progress"
                             class="progress-bar progress-bar-danger"
                             role="progressbar"
                             aria-valuenow="40"
@@ -226,7 +234,10 @@
                   <div class="white-box">
                     <div class="col-in row">
                       <div class="col-xs-12">
-                        <h3 class="counter text-right m-t-15 text-megna">
+                        <h3
+                          id="executing-task"
+                          class="counter text-right m-t-15 text-megna"
+                        >
                           50%
                         </h3>
                       </div>
@@ -242,6 +253,7 @@
                       <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="progress">
                           <div
+                            id="executing-progress"
                             class="progress-bar progress-bar-megna"
                             role="progressbar"
                             aria-valuenow="40"
@@ -260,7 +272,10 @@
                   <div class="white-box">
                     <div class="col-in row">
                       <div class="col-xs-12">
-                        <h3 class="counter text-right m-t-15 text-primary">
+                        <h3
+                          id="completed-task"
+                          class="counter text-right m-t-15 text-primary"
+                        >
                           30%
                         </h3>
                       </div>
@@ -274,6 +289,7 @@
                       <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="progress">
                           <div
+                            id="completed-progress"
                             class="progress-bar progress-bar-primary"
                             role="progressbar"
                             aria-valuenow="40"
@@ -299,70 +315,19 @@
             <div class="col-md-4">
               <div class="white-box">
                 <h3 class="box-title">Chưa thực hiện</h3>
-                <div class="message-center">
-                  <a href="#">
-                    <div class="mail-contnet">
-                      <h5>Phân tích hệ thống</h5>
-                      <span class="mail-desc"></span>
-                      <span class="time">Bắt đầu: 05/07/2020</span>
-                      <span class="time">Kết thúc: 17/07/2020</span>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="mail-contnet">
-                      <h5>Thiết kế database</h5>
-                      <span class="mail-desc"></span>
-                      <span class="time">Bắt đầu: 05/07/2020</span>
-                      <span class="time">Kết thúc: 17/07/2020</span>
-                    </div>
-                  </a>
-                </div>
+                <div id="user-unstart-task" class="message-center"></div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="white-box">
                 <h3 class="box-title">Đang thực hiện</h3>
-                <div class="message-center">
-                  <a href="#">
-                    <div class="mail-contnet">
-                      <h5>Phân tích hệ thống</h5>
-                      <span class="mail-desc"></span>
-                      <span class="time">Bắt đầu: 05/07/2020</span>
-                      <span class="time">Kết thúc: 17/07/2020</span>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="mail-contnet">
-                      <h5>Thiết kế database</h5>
-                      <span class="mail-desc"></span>
-                      <span class="time">Bắt đầu: 05/07/2020</span>
-                      <span class="time">Kết thúc: 17/07/2020</span>
-                    </div>
-                  </a>
-                </div>
+                <div id="user-executing-task" class="message-center"></div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="white-box">
                 <h3 class="box-title">Đã hoàn thành</h3>
-                <div class="message-center">
-                  <a href="#">
-                    <div class="mail-contnet">
-                      <h5>Phân tích hệ thống</h5>
-                      <span class="mail-desc"></span>
-                      <span class="time">Bắt đầu: 05/07/2020</span>
-                      <span class="time">Kết thúc: 17/07/2020</span>
-                    </div>
-                  </a>
-                  <a href="#">
-                    <div class="mail-contnet">
-                      <h5>Thiết kế database</h5>
-                      <span class="mail-desc"></span>
-                      <span class="time">Bắt đầu: 05/07/2020</span>
-                      <span class="time">Kết thúc: 17/07/2020</span>
-                    </div>
-                  </a>
-                </div>
+                <div id="user-completed-task" class="message-center"></div>
               </div>
             </div>
           </div>
@@ -386,5 +351,7 @@
     <script src="js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="/js/user-details.js"></script>
   </body>
 </html>

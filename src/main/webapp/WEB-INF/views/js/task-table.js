@@ -9,7 +9,6 @@ fetch("http://localhost:8080/CRM-Project/api/task", {
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
     var table = $("#task-table").DataTable();
     //clear table before display new data, the last column is the action column edit,delete and get detail
     table.clear().draw();
@@ -24,10 +23,10 @@ fetch("http://localhost:8080/CRM-Project/api/task", {
           convertStringDateToDDMMYY(convertDateObjectToString(value.startDate)),
           convertStringDateToDDMMYY(convertDateObjectToString(value.endDate)),
           value.status.name,
-          '<button class="btn btn-primary btn-sm" onclick="editTask(' +
+          '<button id="btn-edit" class="btn btn-primary btn-sm" onclick="editTask(' +
             value.project.id +
             ')">Sửa</button>' +
-            '<button class="btn btn-danger btn-sm" onclick="deleteTask(' +
+            '<button id="btn-delete" class="btn btn-danger btn-sm" onclick="deleteTask(' +
             value.project.id +
             ')">Xóa</button>' +
             '<button class="btn btn-info btn-sm" onclick="getDetail(' +
@@ -43,36 +42,57 @@ fetch("http://localhost:8080/CRM-Project/api/task", {
 
 //delete project
 function deleteTask(id, event) {
-  var result = confirm("Bạn có chắc chắn muốn xóa công việc này không?");
-  if (result) {
-    fetch("http://localhost:8080/CRM-Project/api/task/delete", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      //body is json
-      body: JSON.stringify({
-        id: id,
-      }),
+  fetch("http://localhost:8080/CRM-Project/get-current-user", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      dataType: "json",
+      Authorization: "Bearer " + jwtToken,
+    },
+  })
+    .then(function (response) {
+      return response.json();
     })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        if (data.isSuccess == true) {
-          alert("Xóa thành công");
-          window.location.reload();
-        } else {
-          alert("Xóa không thành công");
+    .then(function (data) {
+      if (data.role.id == 3) {
+        toastr.error("Không có quyền xóa");
+      } else {
+        // toastr confirm
+        var result = confirm("Bạn có chắc chắn muốn xóa công việc này không?");
+        if (result) {
+          fetch("http://localhost:8080/CRM-Project/api/task/delete", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            //body is json
+            body: JSON.stringify({
+              id: id,
+            }),
+          })
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              if (data.isSuccess == true) {
+                toastr.success("Xóa thành công");
+                window.location.reload();
+              } else {
+                toastr.error("Xoá thất bại");
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+              toastr.error("Xoá thất bại");
+            });
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("Xóa không thành công");
-      });
-  }
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
+
 //edit project
 function editTask(id, event) {
   window.location.href = "/task-add.html?id=" + id;
