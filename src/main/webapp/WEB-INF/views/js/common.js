@@ -11,6 +11,7 @@ var jwtToken = getCookie("jwtToken");
 if (jwtToken == null) {
   window.location.href = "login.html";
 }
+
 //check if user is logged in by fetch api with jwt token
 fetch("http://localhost:8080/CRM-Project/get-current-user", {
   method: "GET",
@@ -34,18 +35,28 @@ fetch("http://localhost:8080/CRM-Project/get-current-user", {
         roleId: data.role.id,
         avatar: data.avatar,
       };
+
       //display current user info
       $(".current-user-name").text(currentUser.fullName);
       $("#self-detail").attr(
         "href",
         "user-details.html?code=" + currentUser.code
       );
+      $("#user-avatar-img").attr("src", currentUser.avatar);
+
+      if (currentUser.roleId == 3) {
+        $("#in-charge").closest(".form-group").hide();
+        $("#start-date").closest(".form-group").hide();
+        $("#end-date").closest(".form-group").hide();
+        $("#project").attr("disabled", true);
+        $("#name").attr("disabled", true);
+        $("#description").attr("disabled", true);
+      }
     }
   })
   .catch(function (error) {
     console.log(error);
   });
-
 function logout() {
   //remove jwtToken from cookie
   document.cookie = "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -80,10 +91,9 @@ function checkEmpty(formEl) {
   var check = true;
   formEl.find("input").each(function () {
     //remove space before and after string
-
     if ($(this).val().trim() == "") {
-      check = false;
+      return false;
     }
   });
-  return check;
+  return true;
 }

@@ -13,8 +13,7 @@ fetch("http://localhost:8080/CRM-Project/get-current-user", {
   })
   .then(function (data) {
     if (data.role.id == 3 && data.code != code) {
-      alert("Không có quyền truy cập");
-      window.location.href = "index.html";
+      window.location.href = "index.html?message=not-permission";
     }
   })
   .catch(function (error) {
@@ -31,8 +30,9 @@ fetch("http://localhost:8080/CRM-Project/api/user/getUserById?code=" + code, {
     return response.json();
   })
   .then(function (data) {
-    $("#user-full-name").text(data.fullName);
-    $("#user-email").text(data.email);
+    $("#profile-avatar-img").attr("src", data.avatar);
+    $("#profile-user-name").text(data.fullName);
+    $("#profile-email").text(data.email);
   })
   .catch(function (error) {
     console.log(error);

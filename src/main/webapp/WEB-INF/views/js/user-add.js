@@ -29,11 +29,46 @@ if (code != null) {
       $("#phone").val(data.phone);
       $("#address").val(data.address);
       $("#roleId").val(data.role.id);
+      if (data.avatar != null) {
+        $("#avatar-img").attr("src", data.avatar);
+      } else {
+        $("#avatar-img").attr(
+          "src",
+          "https://res.cloudinary.com/dxjbg114a/image/upload/v1661892260/default_profile_rp2yyq.png"
+        );
+      }
     })
     .catch(function (error) {
       console.log(error);
     });
+} else {
+  $("#avatar-img").attr(
+    "src",
+    "https://res.cloudinary.com/dxjbg114a/image/upload/v1661892260/default_profile_rp2yyq.png"
+  );
 }
+
+//#avatar on change event
+$("#avatar").change(function (event) {
+  var file = event.target.files[0];
+  var formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "ua86x2n1");
+  fetch("https://api.cloudinary.com/v1_1/dxjbg114a/image/upload", {
+    method: "POST",
+    body: formData,
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      $("#avatar-img").attr("src", data.secure_url);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
 
 //add user
 function addUser(event) {
@@ -72,6 +107,7 @@ function addUser(event) {
       console.log(error);
     });
 }
+
 //update user
 function updateUser(event) {
   //get form data
@@ -112,27 +148,7 @@ function toJson(form) {
   $.each(array, function () {
     json[this.name] = this.value || "";
     json["role"] = { id: $("#roleId").val() };
+    json["avatar"] = $("#avatar-img").attr("src");
   });
   return json;
-}
-
-//upload image to cdn
-function uploadImage(event) {
-  var file = event.target.files[0];
-  var formData = new FormData();
-  formData.append("file", file);
-  fetch("http://localhost:8080/CRM-Project/api/image/upload", {
-    method: "POST",
-    body: formData,
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      $("#image").val(data.imageUrl);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
 }

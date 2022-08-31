@@ -24,8 +24,7 @@ fetch("http://localhost:8080/CRM-Project/get-current-user", {
   })
   .then(function (data) {
     if (data.role.id == 2) {
-      alert("Không có quyền truy cập");
-      window.location.href = "index.html";
+      window.location.href = "index.html?message=not-permission";
     }
   })
   .catch(function (error) {

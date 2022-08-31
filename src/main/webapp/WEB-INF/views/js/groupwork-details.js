@@ -27,9 +27,13 @@ fetch("http://localhost:8080/CRM-Project/api/task/project?id=" + id, {
         completedTask++;
       }
     }
-    $("#unstart-task").text((unstartTask / totalTask) * 100 + "%");
-    $("#executing-task").text((executingTask / totalTask) * 100 + "%");
-    $("#completed-task").text((completedTask / totalTask) * 100 + "%");
+    $("#unstart-task").text(Math.round((unstartTask / totalTask) * 100) + "%");
+    $("#executing-task").text(
+      Math.round((executingTask / totalTask) * 100) + "%"
+    );
+    $("#completed-task").text(
+      Math.round((completedTask / totalTask) * 100) + "%"
+    );
     $("#unstart-progress").attr(
       "style",
       "width:" + (unstartTask / totalTask) * 100 + "%"
@@ -47,15 +51,19 @@ fetch("http://localhost:8080/CRM-Project/api/task/project?id=" + id, {
 
     // if have same user id, add task element to user element
     var user = [];
-    for (var i = 0; i < data.length; i++) {
+
+    user.push(data[0].user);
+    for (var i = 1; i < data.length; i++) {
       for (var j = 0; j < user.length; j++) {
-        if (user[j].id == data[i].user.id) {
+        if (user[j].code == data[i].user.code) {
           break;
         }
+        user.push(data[i].user);
       }
-      user.push(data[i].user);
     }
+    console.log("list user");
     console.log(user);
+
     for (var i = 0; i < user.length; i++) {
       let taskOfUser = [];
       for (var j = 0; j < data.length; j++) {
@@ -81,10 +89,14 @@ fetch("http://localhost:8080/CRM-Project/api/task/project?id=" + id, {
       var userTaskElement =
         `<div id="user-task" class="row">
         <div class="col-xs-12">
-          <a href="#" class="group-title">
+          <a href="user-details.html?code=` +
+        user[i].code +
+        `"  class="group-title">
             <img
               width="30"
-              src="plugins/images/users/pawandeep.jpg"
+              src="` +
+        user[i].avatar +
+        `"
               class="img-circle"
             />
             <span>` +

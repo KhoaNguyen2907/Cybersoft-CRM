@@ -1,3 +1,9 @@
+var url = new URL(window.location.href);
+var message = url.searchParams.get("message");
+if (message == "not-permission") {
+  toastr.error("Không có quyền truy cập");
+}
+
 fetch("http://localhost:8080/CRM-Project/api/task", {
   method: "GET",
   headers: {

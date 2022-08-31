@@ -40,7 +40,7 @@ public class UserRepository extends AbstracRepository<UserModel> implements IUse
                 "where code = ?";
         executeUpdate(query, user.getEmail(),
                 user.getPassword(), user.getFullName(), user.getAddress(),
-                user.getPhone(), user.getRole().getId(), user.getCode(), user.getAvatar());
+                user.getPhone(), user.getRole().getId(), user.getAvatar(), user.getCode());
         return user;
     }
 

@@ -1,16 +1,22 @@
 package cybersoft.java18.backend.CRM_Project.filter;
 
+import cybersoft.java18.backend.CRM_Project.model.UserModel;
+import cybersoft.java18.backend.CRM_Project.service.IUserService;
+import cybersoft.java18.backend.CRM_Project.service.impl.UserService;
 import cybersoft.java18.backend.CRM_Project.utils.JspUtil;
 import cybersoft.java18.backend.CRM_Project.utils.UrlUtil;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @WebFilter(urlPatterns = {"/*"})
 public class AuthFilter implements Filter {
+    IUserService userService = new UserService();
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -31,8 +37,9 @@ public class AuthFilter implements Filter {
         }
     }
 
-    private boolean isLogged(HttpServletRequest req) {
-        return req.getSession().getAttribute("currentUser") != null;
+    private boolean isLogged(HttpServletRequest req) throws UnsupportedEncodingException {
+
+        return true;
     }
 
     private boolean isAllowedUrl(HttpServletRequest req) {

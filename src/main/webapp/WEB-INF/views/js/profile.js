@@ -20,8 +20,12 @@ fetch("http://localhost:8080/CRM-Project/get-current-user", {
         roleId: data.role.id,
         avatar: data.avatar,
       };
+      console.log(currentUser);
       //display current user info
       $(".current-user-name").text(currentUser.fullName);
+      $("#profile-avatar-img").attr("src", currentUser.avatar);
+      $("#profile-user-name").text(currentUser.fullName);
+      $("#profile-email").text(currentUser.email);
       fetch(
         "http://localhost:8080/CRM-Project/api/task/user?id=" +
           currentUser.code,
@@ -33,9 +37,11 @@ fetch("http://localhost:8080/CRM-Project/get-current-user", {
         }
       )
         .then(function (response) {
+          console.log(response);
           return response.json();
         })
         .then(function (data) {
+          console.log(data);
           $("tbody").empty();
           for (var i = 0; i < data.length; i++) {
             $("tbody").append(
@@ -82,9 +88,15 @@ fetch("http://localhost:8080/CRM-Project/get-current-user", {
               completedTask++;
             }
           }
-          $("#unstart-task").text((unstartTask / totalTask) * 100 + "%");
-          $("#executing-task").text((executingTask / totalTask) * 100 + "%");
-          $("#completed-task").text((completedTask / totalTask) * 100 + "%");
+          $("#unstart-task").text(
+            Math.round((unstartTask / totalTask) * 100) + "%"
+          );
+          $("#executing-task").text(
+            Math.round((executingTask / totalTask) * 100) + "%"
+          );
+          $("#completed-task").text(
+            Math.round((completedTask / totalTask) * 100) + "%"
+          );
           $("#unstart-progress").attr(
             "style",
             "width:" + (unstartTask / totalTask) * 100 + "%"

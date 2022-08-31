@@ -24,10 +24,10 @@ fetch("http://localhost:8080/CRM-Project/api/task", {
           convertStringDateToDDMMYY(convertDateObjectToString(value.endDate)),
           value.status.name,
           '<button id="btn-edit" class="btn btn-primary btn-sm" onclick="editTask(' +
-            value.project.id +
+            value.id +
             ')">Sửa</button>' +
             '<button id="btn-delete" class="btn btn-danger btn-sm" onclick="deleteTask(' +
-            value.project.id +
+            value.id +
             ')">Xóa</button>' +
             '<button class="btn btn-info btn-sm" onclick="getDetail(' +
             value.project.id +

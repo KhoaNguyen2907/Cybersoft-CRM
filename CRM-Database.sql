@@ -20,6 +20,19 @@ CREATE TABLE IF NOT EXISTS User (
     role_id INT NOT NULL,
     PRIMARY KEY (code)
 );
+
+CREATE TABLE IF NOT EXISTS LoggedUser (
+    code INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    fullname VARCHAR(100) NOT NULL,
+    address VARCHAR(100),
+    phone VARCHAR(100),
+    avatar VARCHAR(100),
+    role_id INT NOT NULL,
+    PRIMARY KEY (code)
+);
+
 CREATE TABLE IF NOT EXISTS Status(
     id INT NOT NULL,
     name VARCHAR(50) NOT NULL,
@@ -48,6 +61,8 @@ CREATE TABLE IF NOT EXISTS Task(
     PRIMARY KEY (id)
 );
 
+
+
 ALTER TABLE User ADD FOREIGN KEY (role_id) REFERENCES Role(id)  ON DELETE CASCADE;
 ALTER TABLE Task ADD FOREIGN KEY (user_code) REFERENCES User (code)  ON DELETE CASCADE;
 ALTER TABLE Task ADD FOREIGN KEY (project_id) REFERENCES Project(id)  ON DELETE CASCADE;
@@ -58,8 +73,8 @@ INSERT INTO Role (role_name,description) values ('admin','Quản trị viên h�
 INSERT INTO Role (role_name,description) values ('leader','Quản lý dự án');
 INSERT INTO Role (role_name,description) values ('user','Nhân viên');
 
-INSERT INTO `CybersoftCRM`.`User` (`email`, `password`, `fullname`, `address`, `phone`, `avatar`, `role_id`) VALUES ('khoa@gmail.com', '123', 'Khoa Nguyen', 'ad 1', '0123', 'avt1', '1');
-INSERT INTO `CybersoftCRM`.`User` (`email`, `password`, `fullname`, `address`, `phone`, `avatar`, `role_id`) VALUES ('nhi@gmail.com', '123', 'Nhi Thai', 'ad 2', '0938', 'avt2', '2');
+INSERT INTO `CybersoftCRM`.`User` (`email`, `password`, `fullname`, `address`, `phone`, `avatar`, `role_id`) VALUES ('khoa@gmail.com', '123', 'Khoa Nguyen', 'ad 1', '0123', 'https://res.cloudinary.com/dxjbg114a/image/upload/v1661893008/cyw07lhssguyueydfo8r.jpg', '1');
+INSERT INTO `CybersoftCRM`.`User` (`email`, `password`, `fullname`, `address`, `phone`, `avatar`, `role_id`) VALUES ('nhi@gmail.com', '123', 'Nhi Thai', 'ad 2', '0938', 'https://res.cloudinary.com/dxjbg114a/image/upload/v1661893909/avt-cute_i9v4do.jpg', '2');
 
 INSERT INTO `CybersoftCRM`.`Project` (`project_name`, `project_description`, `start_date`, `end_date`, `user_code`) VALUES ('Dự án CRM', 'Dự án CRM Cybersoft', '2022-08-18', '2022-08-30', '1');
 INSERT INTO `CybersoftCRM`.`Project` (`project_name`, `project_description`, `start_date`, `end_date`, `user_code`) VALUES ('Dự án AI', 'Dự án cuối khoá', '2022-08-10', '2022-08-25', '2');

@@ -75,7 +75,7 @@ if (id != null) {
   $("#btn-update").attr("onclick", "updateTask(event)");
   // add input hidden
   $("#submit-form").append(
-    "<input type='hidden' name='id' value='" + id + "'>"
+    "<input type='hidden' id='id' name='id' value='" + id + "'>"
   );
 
   //get task from server and display in form when page is load
@@ -89,7 +89,6 @@ if (id != null) {
       return response.json();
     })
     .then(function (data) {
-      //setvalue for select element
       $("#project").val(data.project.id);
       $("#name").val(data.name);
       $("#description").val(data.description);
@@ -97,7 +96,6 @@ if (id != null) {
       $("#start-date").val(convertDateObjectToString(data.startDate));
       $("#end-date").val(convertDateObjectToString(data.endDate));
       $("#status").val(data.status.id);
-      $("#created-by").val(data.createdBy);
     })
     .catch(function (error) {
       console.log(error);
@@ -180,11 +178,10 @@ function updateTask(event) {
 }
 
 function toJson(form) {
-  var array = $(form).serializeArray();
   var json = {};
-  $.each(array, function () {
-    json[this.name] = this.value || "";
-  });
+  json["id"] = $("#id").val();
+  json["description"] = $("#description").val();
+  json["name"] = $("#name").val();
   json["user"] = { code: $("#in-charge").val() };
   json["project"] = { id: $("#project").val() };
   json["status"] = { id: $("#status").val() };

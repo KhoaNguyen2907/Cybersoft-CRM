@@ -1,12 +1,0 @@
-
-J
-java:S3740"/Provide the parametrized type for this generic.(¸ø…ıøÿÿÿÿ
-¶
-java:S1192"ŸDefine a constant instead of duplicating this literal "select code, email,password, fullname, address, phone,role_id, role_name, description, avatar " 3 times.(£¾Ìô
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¯³€‹ıÿÿÿÿ
-A
-java:S1168"+Return an empty collection instead of null.(¥¹ï
-`
-java:S1155;">Use isEmpty() to check whether the collection is empty or not.(Ö¤‹Âøÿÿÿÿ8Ñí¼ä¬0
-`
-java:S1155O">Use isEmpty() to check whether the collection is empty or not.(˜äÕøÿÿÿÿ8®Íºä¬0
