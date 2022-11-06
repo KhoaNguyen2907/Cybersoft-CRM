@@ -1,6 +1,4 @@
 
-@
-CRM-Database.sql,9\3\931a665d20d45fcf1b2373499137a615fac1e03e
 u
 Esrc/main/java/cybersoft/java18/backend/CRM_Project/utils/JspUtil.java,4\5\45c68d9f6cae0bef82acb721931854a63f3a6d19
 |
@@ -43,12 +41,8 @@ O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 |
 Lsrc/main/java/cybersoft/java18/backend/CRM_Project/service/IUserService.java,3\f\3f475f03906008860f1e4887b4a5362310d53dd3
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 „
 Tsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/IStatusRepository.java,f\a\fa889fe0b99dc86a7d0bb4ea885ad0bc40907bbe
-„
-Tsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/AbstracRepository.java,e\5\e5ff49adb97262aebf325e7950eea01e552c3319
 ‚
 Rsrc/main/java/cybersoft/java18/backend/CRM_Project/service/impl/StatusService.java,e\0\e00df4667a58c4e54c2320c65ce99b961cbb987d
 ƒ

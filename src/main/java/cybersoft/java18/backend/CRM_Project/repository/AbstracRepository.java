@@ -1,6 +1,6 @@
 package cybersoft.java18.backend.CRM_Project.repository;
 
-import cybersoft.java18.backend.CRM_Project.jdbc.MySQLConnection;
+import cybersoft.java18.backend.CRM_Project.jdbc.PostgresqlConnection;
 import cybersoft.java18.backend.CRM_Project.mapper.IAbstractMapper;
 
 import java.sql.*;
@@ -26,7 +26,7 @@ public class AbstracRepository<T> {
     }
 
     public List<T> executeQuery(String query, IAbstractMapper<T> rowMapper, Object... parameter) {
-        try (Connection connection = MySQLConnection.getConnection();
+        try (Connection connection = PostgresqlConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             List<T> list = new ArrayList<>();
             setParameter(statement, parameter);
@@ -45,7 +45,7 @@ public class AbstracRepository<T> {
     }
 
     public int executeUpdate(String query, Object... parameter) {
-        try (Connection connection = MySQLConnection.getConnection();
+        try (Connection connection = PostgresqlConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             setParameter(statement, parameter);
