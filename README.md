@@ -24,7 +24,7 @@ Quản lý dự án(leader)
 – Đăng nhập hệ thống
 – Quản lý tài khoản cá nhân
 
-Thành viên (member)
+Thành viên (user)
 – Đăng nhập hệ thống
 – Cập nhật tiến độ công việc
 – Xem thống kê công việc (cá nhân)
