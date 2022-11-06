@@ -6,8 +6,6 @@ import cybersoft.java18.backend.CRM_Project.model.ProjectModel;
 import cybersoft.java18.backend.CRM_Project.repository.AbstracRepository;
 import cybersoft.java18.backend.CRM_Project.repository.IProjectRepository;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class ProjectRepository extends AbstracRepository<ProjectModel> implements IProjectRepository {
@@ -21,7 +19,7 @@ public class ProjectRepository extends AbstracRepository<ProjectModel> implement
 
     @Override
     public ProjectModel saveProject(ProjectModel project) {
-        if (project.getEndDate() != null){
+        if (project.getEndDate() != null) {
             String query = "insert into Project(id,project_name,project_description, start_date, end_date, user_code) " +
                     "values(?,?,?,?,?,?)";
             int id = executeUpdate(query, project.getId(), project.getName(), project.getDescription(),
@@ -46,12 +44,12 @@ public class ProjectRepository extends AbstracRepository<ProjectModel> implement
                     "where id = ? ";
             executeUpdate(query, project.getName(), project.getDescription(),
                     project.getStartDate().atStartOfDay(), project.getEndDate().atStartOfDay(),
-                    project.getCreatedBy(),project.getId());
+                    project.getCreatedBy(), project.getId());
         } else {
             String query = "update Project set project_name = ?, project_description = ? , start_date = ?, user_code = ? " +
                     "where id = ? ";
             executeUpdate(query, project.getName(), project.getDescription(),
-                   project.getStartDate().atStartOfDay(), project.getCreatedBy(),project.getId());
+                    project.getStartDate().atStartOfDay(), project.getCreatedBy(), project.getId());
         }
 
         return project;

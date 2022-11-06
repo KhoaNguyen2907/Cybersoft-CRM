@@ -18,7 +18,7 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
                 .append(" p.user_code as project_user_code, s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")
-                .append(" inner join Status s on t.status_id = s.id inner join User u on t.user_code = u.code")
+                .append(" inner join Status s on t.status_id = s.id inner join Users u on t.user_code = u.code")
                 .toString();
         return executeQuery(query, mapper);
     }
@@ -74,7 +74,7 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
                 .append(" p.user_code as project_user_code, s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")
-                .append(" inner join Status s on t.status_id = s.id inner join User u on t.user_code = u.code")
+                .append(" inner join Status s on t.status_id = s.id inner join Users u on t.user_code = u.code")
                 .append(" where t.id = ?")
                 .toString();
         List<TaskModel> tasks = executeQuery(query, mapper, taskId);
@@ -88,7 +88,7 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
                 .append(" p.user_code as project_user_code,  s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")
-                .append(" inner join Status s on t.status_id = s.id inner join User u on t.user_code = u.code")
+                .append(" inner join Status s on t.status_id = s.id inner join Users u on t.user_code = u.code")
                 .append(" where p.id = ?")
                 .toString();
         return executeQuery(query, mapper, projectId);
@@ -101,7 +101,7 @@ public class TaskRepository extends AbstracRepository<TaskModel> implements ITas
                 .append("p.start_date as project_start_date, p.end_date as project_end_date,")
                 .append(" p.user_code as project_user_code, s.id as status_id, s.name as status_name")
                 .append("  from Task t inner join Project p on t.project_id = p.id")
-                .append(" inner join Status s on t.status_id = s.id inner join User u on t.user_code = u.code")
+                .append(" inner join Status s on t.status_id = s.id inner join Users u on t.user_code = u.code")
                 .append(" where u.code = ?")
                 .toString();
         return executeQuery(query, mapper, userId);
