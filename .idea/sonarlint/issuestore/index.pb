@@ -41,8 +41,6 @@ Psrc/main/java/cybersoft/java18/backend/CRM_Project/service/impl/UserService.jav
 Rsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/IUserRepository.java,c\3\c3f3d37b2c0b89a361eed0ae898ccc1dd6e20c81
 O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
-Å
-Qsrc/main/java/cybersoft/java18/backend/CRM_Project/controller/UserController.java,c\e\ce1a5b50d4ae3bfa45fee874b45045e094434247
 |
 Lsrc/main/java/cybersoft/java18/backend/CRM_Project/service/IUserService.java,3\f\3f475f03906008860f1e4887b4a5362310d53dd3
 7
@@ -67,3 +65,5 @@ Esrc/main/java/cybersoft/java18/backend/CRM_Project/utils/UrlUtil.java,c\b\cb7f
 Lsrc/main/java/cybersoft/java18/backend/CRM_Project/mapper/ProjectMapper.java,c\c\cc3f627411ec99ca5e971224057a9e7b38632c5c
 Ç
 Rsrc/main/java/cybersoft/java18/backend/CRM_Project/repository/ITaskRepository.java,b\f\bf9e92693c48fb38226cfd6bd6300e34e658c9af
+|
+Lsrc/main/java/cybersoft/java18/backend/CRM_Project/service/ITaskService.java,7\1\7137de0291598f51cb81f0ac7ba04c4a33f67d1c
